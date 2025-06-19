@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Grammar Activities</title>
+    <link rel="icon" href="https://static.wixstatic.com/media/0f55f2_b4662666c9b34fe58ed45b414b10cae3~mv2.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0fdf4; /* Light green theme */
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .feedback {
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            height: 1.25rem;
+        }
+        .correct {
+            color: #16a34a; /* green-600 */
+        }
+        .incorrect {
+            color: #dc2626; /* red-600 */
+        }
+        .nav-button {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-button.active {
+            background-color: #22c55e; /* green-500 */
+            color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .rule-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+            border-left: 4px solid #4ade80; /* green-400 */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="max-w-4xl mx-auto p-4 md:p-8">
+        <!-- Header Image -->
+        <header class="mb-8">
+            <img src="https://static.wixstatic.com/media/0f55f2_d0ce1f16f68b4f57ab1ee7c6337b7902~mv2.jpg" alt="Header" class="w-full h-auto rounded-lg shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/1200x300/a7f3d0/14532d?text=Header+Image';">
+        </header>
+
+        <!-- Navigation -->
+        <nav class="flex justify-center space-x-2 mb-8 bg-white p-2 rounded-full shadow-sm">
+            <button id="nav-rules" class="nav-button active px-4 py-2 rounded-full font-semibold text-gray-600 hover:bg-green-100">Rules</button>
+            <button id="nav-activity1" class="nav-button px-4 py-2 rounded-full font-semibold text-gray-600 hover:bg-green-100">Activity 1</button>
+            <button id="nav-activity2" class="nav-button px-4 py-2 rounded-full font-semibold text-gray-600 hover:bg-green-100">Activity 2</button>
+        </nav>
+
+        <main class="bg-green-50/50 p-6 sm:p-8 rounded-2xl shadow-lg">
+            <!-- Page 1: Rules -->
+            <div id="page-rules" class="page active">
+                <h1 class="text-3xl font-bold text-green-700 mb-6 text-center">Grammar at Work: Questions</h1>
+                
+                <div class="space-y-6">
+                    <div class="rule-card">
+                        <h2 class="text-2xl font-semibold text-gray-700 mb-2">Yes/No Questions</h2>
+                        <p class="text-gray-600 leading-relaxed">As the name suggests, the answer is usually "yes" or "no", but can also express uncertainty. They start with an auxiliary (be, do, have) or modal verb (can, should).</p>
+                        <p class="mt-3 pl-4 border-l-4 border-green-200 text-gray-500 italic">"Is John still working for you?" &rarr; "No, he retired last year."</p>
+                        <p class="mt-1 pl-4 border-l-4 border-green-200 text-gray-500 italic">"Has the post arrived yet?" &rarr; "I think so."</p>
+                    </div>
+
+                    <div class="rule-card">
+                        <h2 class="text-2xl font-semibold text-gray-700 mb-2">'Wh-' Questions</h2>
+                        <p class="text-gray-600 leading-relaxed">These use a question word (who, what, which, where, when, why, how) to ask for specific information. The answer is a piece of information, not "yes" or "no".</p>
+                        <p class="mt-3 pl-4 border-l-4 border-green-200 text-gray-500 italic">"How do you switch on the photocopier?" &rarr; "Press that red button on the left."</p>
+                         <p class="mt-1 pl-4 border-l-4 border-green-200 text-gray-500 italic">"Why haven't you gone home yet?" &rarr; "I have to finish this report."</p>
+                    </div>
+
+                    <div class="rule-card">
+                        <h2 class="text-2xl font-semibold text-gray-700 mb-2">Word Order</h2>
+                        <p class="text-gray-600 leading-relaxed mb-2">For the verb <span class="font-semibold text-green-600">'be'</span>, the order is: <span class="font-mono text-sm bg-gray-100 p-1 rounded">Question Word (optional) + 'be' + Subject</span>.</p>
+                        <p class="pl-4 border-l-2 border-gray-200 text-gray-500 italic">"Is Steve a doctor?" / "Why was the train late?"</p>
+
+                        <p class="text-gray-600 leading-relaxed mt-4 mb-2">For all <span class="font-semibold text-green-600">other verbs</span>, an auxiliary verb is needed (be, have, will, do, can, should). The order is: <span class="font-mono text-sm bg-gray-100 p-1 rounded">Q-Word (opt) + Auxiliary + Subject + Main Verb</span>.</p>
+                         <p class="pl-4 border-l-2 border-gray-200 text-gray-500 italic">"Does Susan work for the FBI?" / "When will the project be completed?"</p>
+                    </div>
+                    
+                    <div class="rule-card">
+                        <h2 class="text-2xl font-semibold text-gray-700 mb-2">Question Word as Subject</h2>
+                        <p class="text-gray-600 leading-relaxed">If the question word (who, what, which, whose) is the subject, we do not add an auxiliary like 'do'. The word order is the same as a statement: <span class="font-mono text-sm bg-gray-100 p-1 rounded">Subject (Q-Word) + Verb</span>.</p>
+                        <p class="mt-3 pl-4 border-l-4 border-green-200 text-gray-500 italic">"Who left the computer on all night?"</p>
+                        <p class="mt-1 pl-4 border-l-4 border-green-200 text-gray-500 italic">"What made you change your mind?"</p>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold text-green-700 mb-2 pt-4 text-center border-t border-green-200">Advanced Question Types</h3>
+
+                    <div class="rule-card">
+                        <h2 class="text-2xl font-semibold text-gray-700 mb-2">Indirect Questions</h2>
+                        <p class="text-gray-600 leading-relaxed">To be more polite, we introduce a question with a phrase like "Could you tell me...". The question that follows uses statement word order (Subject + Verb).</p>
+                        <p class="mt-3 pl-4 border-l-4 border-green-200 text-gray-500 italic">"Could you tell me <span class="font-semibold">when the train leaves</span>?" (not "when does the train leave")</p>
+                    </div>
+                    
+                    <div class="rule-card">
+                        <h2 class="text-2xl font-semibold text-gray-700 mb-2">Reply Questions</h2>
+                        <p class="text-gray-600 leading-relaxed">Short questions used to get more information or to show interest and keep a conversation going.</p>
+                        <p class="mt-3 pl-4 border-l-4 border-green-200 text-gray-500 italic">"I've got an appointment." &rarr; "<span class="font-semibold">When?</span>"</p>
+                         <p class="mt-1 pl-4 border-l-4 border-green-200 text-gray-500 italic">"I'm flying to Rome." &rarr; "<span class="font-semibold">Are you?</span> Great!"</p>
+                    </div>
+                    
+                    <div class="rule-card">
+                        <h2 class="text-2xl font-semibold text-gray-700 mb-2">Declarative Questions</h2>
+                        <p class="text-gray-600 leading-relaxed">These have the word order of a statement but the intonation of a question. They often express surprise.</p>
+                        <p class="mt-3 pl-4 border-l-4 border-green-200 text-gray-500 italic">"You're still here? It's nearly eight o'clock!"</p>
+                    </div>
+                    
+                     <div class="rule-card">
+                        <h2 class="text-2xl font-semibold text-gray-700 mb-2">Tag Questions</h2>
+                        <p class="text-gray-600 leading-relaxed">Short questions added to the end of a statement to invite agreement or make a request sound friendlier. A positive statement gets a negative tag, and vice-versa.</p>
+                        <p class="mt-3 pl-4 border-l-4 border-green-200 text-gray-500 italic">"The presentation was excellent, <span class="font-semibold">wasn't it?</span>"</p>
+                         <p class="mt-1 pl-4 border-l-4 border-green-200 text-gray-500 italic">"You couldn't lend me a fiver, <span class="font-semibold">could you?</span>"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 2: Activity 1 -->
+            <div id="page-activity1" class="page">
+                <h1 class="text-3xl font-bold text-green-700 mb-2">Activity 1: Build the Question</h1>
+                <p class="text-gray-500 mb-6">Write questions using the words in brackets. Check your answer for immediate feedback.</p>
+                <div class="space-y-6">
+                    <!-- Question 1 -->
+                    <div>
+                        <label for="q1-input" class="font-semibold text-gray-700">a) (you / work / in the same department as Jeffrey)</label>
+                        <p class="text-sm text-gray-500 italic mb-2">Answer clue: "Yes, we even share an office."</p>
+                        <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                            <input id="q1-input" type="text" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" placeholder="Type your question here...">
+                            <button onclick="checkAnswer(1)" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-sm">Check</button>
+                        </div>
+                        <p id="q1-feedback" class="feedback"></p>
+                    </div>
+                    <!-- Question 2 -->
+                    <div>
+                        <label for="q2-input" class="font-semibold text-gray-700">b) (Sarah / phone / while / I / out)</label>
+                        <p class="text-sm text-gray-500 italic mb-2">Answer clue: "No, she's probably still in the meeting."</p>
+                         <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                            <input id="q2-input" type="text" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" placeholder="Type your question here...">
+                            <button onclick="checkAnswer(2)" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-sm">Check</button>
+                        </div>
+                        <p id="q2-feedback" class="feedback"></p>
+                    </div>
+                    <!-- Question 3 -->
+                    <div>
+                        <label for="q3-input" class="font-semibold text-gray-700">c) (why / you / not / finish / your studies)</label>
+                        <p class="text-sm text-gray-500 italic mb-2">Answer clue: "Because I had a baby."</p>
+                         <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                            <input id="q3-input" type="text" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" placeholder="Type your question here...">
+                            <button onclick="checkAnswer(3)" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-sm">Check</button>
+                        </div>
+                        <p id="q3-feedback" class="feedback"></p>
+                    </div>
+                    <!-- Question 4 -->
+                    <div>
+                        <label for="q4-input" class="font-semibold text-gray-700">d) (what / happen / after / police / arrest / him)</label>
+                        <p class="text-sm text-gray-500 italic mb-2">Answer clue: "He had an alibi, so they had to let him go."</p>
+                         <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                            <input id="q4-input" type="text" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" placeholder="Type your question here...">
+                            <button onclick="checkAnswer(4)" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-sm">Check</button>
+                        </div>
+                        <p id="q4-feedback" class="feedback"></p>
+                    </div>
+                     <!-- Question 5 -->
+                    <div>
+                        <label for="q5-input" class="font-semibold text-gray-700">e) (who / have got / my dictionary)</label>
+                        <p class="text-sm text-gray-500 italic mb-2">Answer clue: "I have. Do you need it?"</p>
+                         <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                            <input id="q5-input" type="text" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" placeholder="Type your question here...">
+                            <button onclick="checkAnswer(5)" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-sm">Check</button>
+                        </div>
+                        <p id="q5-feedback" class="feedback"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 3: Activity 2 -->
+            <div id="page-activity2" class="page">
+                <h1 class="text-3xl font-bold text-green-700 mb-2">Activity 2: Make it Polite</h1>
+                <p class="text-gray-500 mb-6">Make these questions more polite by rewriting them with one of the introductory phrases.</p>
+                <div class="text-center mb-6 bg-green-50 p-3 rounded-lg ring-1 ring-green-200">
+                    <p class="font-semibold">Use one of these: <span class="text-green-600">Do you know...</span> / <span class="text-green-600">Could you tell me...</span> / <span class="text-green-600">May I ask...</span></p>
+                </div>
+                <div class="space-y-6">
+                    <!-- Question 6 -->
+                    <div>
+                        <label for="q6-input" class="font-semibold text-gray-700">a) Original: "Where's Janet?"</label>
+                         <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 mt-2">
+                            <input id="q6-input" type="text" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" placeholder="Type the polite question...">
+                            <button onclick="checkAnswer(6)" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-sm">Check</button>
+                        </div>
+                        <p id="q6-feedback" class="feedback"></p>
+                    </div>
+                     <!-- Question 7 -->
+                    <div>
+                        <label for="q7-input" class="font-semibold text-gray-700">b) Original: "Have you paid my fee yet?"</label>
+                         <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 mt-2">
+                            <input id="q7-input" type="text" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" placeholder="Type the polite question...">
+                            <button onclick="checkAnswer(7)" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-sm">Check</button>
+                        </div>
+                        <p id="q7-feedback" class="feedback"></p>
+                    </div>
+                     <!-- Question 8 -->
+                    <div>
+                        <label for="q8-input" class="font-semibold text-gray-700">c) Original: "Who will be chairing the meeting?"</label>
+                         <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 mt-2">
+                            <input id="q8-input" type="text" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" placeholder="Type the polite question...">
+                            <button onclick="checkAnswer(8)" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-sm">Check</button>
+                        </div>
+                        <p id="q8-feedback" class="feedback"></p>
+                    </div>
+                    <!-- Question 9 -->
+                    <div>
+                        <label for="q9-input" class="font-semibold text-gray-700">d) Original: "Is that Mr Cooper over there?"</label>
+                         <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 mt-2">
+                            <input id="q9-input" type="text" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" placeholder="Type the polite question...">
+                            <button onclick="checkAnswer(9)" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-sm">Check</button>
+                        </div>
+                        <p id="q9-feedback" class="feedback"></p>
+                    </div>
+                    <!-- Question 10 -->
+                    <div>
+                        <label for="q10-input" class="font-semibold text-gray-700">e) Original: "Are the trains running on time?"</label>
+                         <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 mt-2">
+                            <input id="q10-input" type="text" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" placeholder="Type the polite question...">
+                            <button onclick="checkAnswer(10)" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-sm">Check</button>
+                        </div>
+                        <p id="q10-feedback" class="feedback"></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // --- Data for questions and answers ---
+        const answers = {
+            1: ["do you and jeffrey work in the same department", "do you work in the same department as jeffrey"],
+            2: ["did sarah phone while i was out"],
+            3: ["why didn't you finish your studies", "why did you not finish your studies"],
+            4: ["what happened after the police arrested him"],
+            5: ["who has got my dictionary", "who's got my dictionary"],
+            6: ["do you know where janet is", "could you tell me where janet is"],
+            7: ["may i ask if you have paid my fee yet", "may i ask whether you have paid my fee yet"],
+            8: ["do you know who will be chairing the meeting", "could you tell me who will be chairing the meeting"],
+            9: ["do you know if that is mr cooper over there", "do you know whether that's mr cooper over there", "do you know if that's mr cooper over there"],
+            10: ["could you tell me if the trains are running on time", "could you tell me whether the trains are running on time", "do you know if the trains are running on time"]
+        };
+
+        // --- Page Navigation Logic ---
+        const pages = document.querySelectorAll('.page');
+        const navButtons = document.querySelectorAll('.nav-button');
+
+        function showPage(pageId) {
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+
+            navButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            document.getElementById(`nav-${pageId.split('-')[1]}`).classList.add('active');
+        }
+
+        document.getElementById('nav-rules').addEventListener('click', () => showPage('page-rules'));
+        document.getElementById('nav-activity1').addEventListener('click', () => showPage('page-activity1'));
+        document.getElementById('nav-activity2').addEventListener('click', () => showPage('page-activity2'));
+
+        // --- Answer Checking Logic ---
+        function checkAnswer(questionNumber) {
+            const inputElement = document.getElementById(`q${questionNumber}-input`);
+            const feedbackElement = document.getElementById(`q${questionNumber}-feedback`);
+            
+            // Clean user input: lowercase, trim whitespace, remove question mark
+            const userAnswer = inputElement.value.toLowerCase().trim().replace(/\?$/, '');
+
+            if (userAnswer === '') {
+                feedbackElement.textContent = "Please enter an answer.";
+                feedbackElement.className = "feedback incorrect";
+                inputElement.classList.add('border-red-400');
+                inputElement.classList.remove('border-green-400');
+                return;
+            }
+
+            const correctAnswers = answers[questionNumber];
+            let isCorrect = false;
+
+            // Check if the user's answer matches any of the possible correct answers
+            for (const ans of correctAnswers) {
+                // Also check for common contractions like "that's" vs "that is"
+                const normalizedUserAnswer = userAnswer.replace(/that's/g, "that is");
+                const normalizedCorrectAnswer = ans.replace(/that's/g, "that is");
+
+                if (normalizedUserAnswer === normalizedCorrectAnswer) {
+                    isCorrect = true;
+                    break;
+                }
+            }
+
+            if (isCorrect) {
+                feedbackElement.textContent = "Correct! Well done.";
+                feedbackElement.className = "feedback correct";
+                inputElement.classList.remove('border-red-400');
+                inputElement.classList.add('border-green-400');
+            } else {
+                feedbackElement.textContent = "Not quite. Check word order or phrasing and try again.";
+                feedbackElement.className = "feedback incorrect";
+                inputElement.classList.add('border-red-400');
+                inputElement.classList.remove('border-green-400');
+            }
+        }
+
+        // Add event listener for 'Enter' key press on all input fields
+        for (let i = 1; i <= 10; i++) {
+             const inputElement = document.getElementById(`q${i}-input`);
+             if (inputElement) {
+                inputElement.addEventListener('keypress', function(event) {
+                    if (event.key === 'Enter') {
+                        // Prevent form submission if inside a form
+                        event.preventDefault();
+                        checkAnswer(i);
+                    }
+                });
+             }
+        }
+    </script>
+</body>
+</html>
