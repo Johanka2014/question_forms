@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Grammar Activities: Questions 1</title>
+    <link rel="icon" href="https://static.wixstatic.com/media/0f55f2_b4662666c9b34fe58ed45b414b10cae3~mv2.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0fdf4; /* Light green theme */
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .feedback {
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            height: 1.25rem;
+        }
+        .correct {
+            color: #16a34a; /* green-600 */
+        }
+        .incorrect {
+            color: #dc2626; /* red-600 */
+        }
+        .nav-button {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-button.active {
+            background-color: #22c55e; /* green-500 */
+            color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .rule-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+            border-left: 4px solid #4ade80; /* green-400 */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="max-w-4xl mx-auto p-4 md:p-8">
+        <!-- Header Image -->
+        <header class="mb-8">
+            <img src="https://static.wixstatic.com/media/0f55f2_d0ce1f16f68b4f57ab1ee7c6337b7902~mv2.jpg" alt="Header" class="w-full h-auto rounded-lg shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/1200x300/a7f3d0/14532d?text=Header+Image';">
+        </header>
+
+        <!-- Navigation -->
+        <nav class="flex justify-center flex-wrap gap-2 mb-8 bg-white p-2 rounded-full shadow-sm">
+            <button id="nav-rules" class="nav-button active px-4 py-2 rounded-full font-semibold text-gray-600 hover:bg-green-100">Rules</button>
+            <button id="nav-activity1" class="nav-button px-4 py-2 rounded-full font-semibold text-gray-600 hover:bg-green-100">Activity 1</button>
+            <button id="nav-activity2" class="nav-button px-4 py-2 rounded-full font-semibold text-gray-600 hover:bg-green-100">Activity 2</button>
+            <button id="nav-activity3" class="nav-button px-4 py-2 rounded-full font-semibold text-gray-600 hover:bg-green-100">Activity 3</button>
+            <button id="nav-activity4" class="nav-button px-4 py-2 rounded-full font-semibold text-gray-600 hover:bg-green-100">Activity 4</button>
+        </nav>
+
+        <main class="bg-green-50/50 p-6 sm:p-8 rounded-2xl shadow-lg">
+            <!-- Page 1: Rules -->
+            <div id="page-rules" class="page active">
+                <h1 class="text-3xl font-bold text-green-700 mb-6 text-center">Forming Questions</h1>
+                
+                <div class="space-y-6">
+                    <div class="rule-card">
+                        <h2 class="text-2xl font-semibold text-gray-700 mb-2">Basic Word Order</h2>
+                        <p class="text-gray-600 leading-relaxed">In questions, we usually put the subject after the first verb.</p>
+                        <p class="mt-3 pl-4 border-l-4 border-green-200 text-gray-500 italic">Statement: Tom <span class="font-semibold text-red-500">will</span> be here. &rarr; Question: <span class="font-semibold text-green-600">Will</span> Tom be here?</p>
+                        <p class="mt-1 pl-4 border-l-4 border-green-200 text-gray-500 italic">Statement: The house <span class="font-semibold text-red-500">was</span> built. &rarr; Question: When <span class="font-semibold text-green-600">was</span> the house built?</p>
+                    </div>
+
+                    <div class="rule-card">
+                        <h2 class="text-2xl font-semibold text-gray-700 mb-2">Using 'do/does/did'</h2>
+                        <p class="text-gray-600 leading-relaxed">For simple present and past tenses (when there is no other auxiliary verb), we add <span class="font-semibold text-green-600">do/does</span> or <span class="font-semibold text-green-600">did</span>.</p>
+                        <p class="mt-3 pl-4 border-l-4 border-green-200 text-gray-500 italic">Present: You live near here. &rarr; <span class="font-semibold">Do</span> you live near here?</p>
+                        <p class="mt-1 pl-4 border-l-4 border-green-200 text-gray-500 italic">Past: You sold your car. &rarr; <span class="font-semibold">Did</span> you sell your car?</p>
+                    </div>
+
+                     <div class="rule-card">
+                        <h2 class="text-2xl font-semibold text-gray-700 mb-2">When 'Who/What' is the Subject</h2>
+                        <p class="text-gray-600 leading-relaxed">Do not use <span class="font-semibold text-red-500">do/does/did</span> if the question word (<span class="font-semibold">Who, What, Which</span>) is the subject of the sentence. The word order is the same as a statement.</p>
+                        <p class="mt-3 pl-4 border-l-4 border-green-200 text-gray-500 italic">Object Question: Who <span class="font-semibold">did</span> Emma phone? (Emma is the subject)</p>
+                        <p class="mt-1 pl-4 border-l-4 border-green-200 text-gray-500 italic">Subject Question: Who phoned Emma? (Who is the subject)</p>
+                         <p class="mt-1 pl-4 border-l-4 border-green-200 text-gray-500 italic">Example: <span class="font-semibold">Which bus goes</span> to the centre? (not: Which bus does go...)</p>
+                    </div>
+
+                    <div class="rule-card">
+                        <h2 class="text-2xl font-semibold text-gray-700 mb-2">Negative Questions</h2>
+                        <p class="text-gray-600 leading-relaxed">We use negative questions (e.g., <span class="font-semibold">Isn't it...? / Didn't you...?</span>) to show surprise or when we expect the listener to agree.</p>
+                        <p class="mt-3 pl-4 border-l-4 border-green-200 text-gray-500 italic">Surprise: <span class="font-semibold">Didn't you hear</span> the doorbell? I rang it three times.</p>
+                        <p class="mt-1 pl-4 border-l-4 border-green-200 text-gray-500 italic">Expecting agreement: <span class="font-semibold">Haven't we met</span> before? Yes, I think we have.</p>
+                         <p class="mt-4 font-semibold text-gray-700">Note the word order with 'Why':</p>
+                         <p class="mt-1 pl-4 border-l-4 border-green-200 text-gray-500 italic"><span class="font-semibold">Why don't we</span> eat out? (not: Why we don't...)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 2: Activity 1 -->
+            <div id="page-activity1" class="page">
+                <h1 class="text-3xl font-bold text-green-700 mb-2">Activity 1: Interview with Joe</h1>
+                <p class="text-gray-500 mb-6">Ask Joe questions based on his answers.</p>
+                <div class="space-y-6">
+                     <!-- Questions 1-8 -->
+                     <script>
+                        const activity1Data = [
+                            { qNum: 1, prompt: "(where / live?)", answer: "In Manchester." },
+                            { qNum: 2, prompt: "(born there?)", answer: "No, I was born in London." },
+                            { qNum: 3, prompt: "(married?)", answer: "Yes." },
+                            { qNum: 4, prompt: "(how long / married?)", answer: "17 years." },
+                            { qNum: 5, prompt: "(children?)", answer: "Yes, two boys." },
+                            { qNum: 6, prompt: "(how old / they?)", answer: "12 and 15." },
+                            { qNum: 7, prompt: "(what / do?)", answer: "I'm a journalist." },
+                            { qNum: 8, prompt: "(what / wife / do?)", answer: "She's a doctor." },
+                        ];
+                        activity1Data.forEach(({qNum, prompt, answer}) => {
+                            document.write(`
+                                <div>
+                                    <p class="font-medium text-gray-500 mb-1">Joe's Answer: "${answer}"</p>
+                                    <label for="q${qNum}-input" class="font-semibold text-gray-700">Your Question: ${prompt}</label>
+                                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 mt-2">
+                                        <input id="q${qNum}-input" type="text" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" placeholder="Type your question...">
+                                        <button onclick="checkAnswer(${qNum})" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-sm">Check</button>
+                                    </div>
+                                    <p id="q${qNum}-feedback" class="feedback"></p>
+                                </div>
+                            `);
+                        });
+                     </script>
+                </div>
+            </div>
+
+            <!-- Page 3: Activity 2 -->
+            <div id="page-activity2" class="page">
+                <h1 class="text-3xl font-bold text-green-700 mb-2">Activity 2: Who or What?</h1>
+                <p class="text-gray-500 mb-6">Make questions with <span class="font-semibold">who</span> or <span class="font-semibold">what</span> for the underlined part.</p>
+                <div class="space-y-6">
+                     <script>
+                        const activity2Data = [
+                           { qNum: 9, statement: "<span class='underline'>Somebody</span> hit me." },
+                           { qNum: 10, statement: "I hit <span class='underline'>somebody</span>." },
+                           { qNum: 11, statement: "<span class='underline'>Somebody</span> paid the bill." },
+                           { qNum: 12, statement: "<span class='underline'>Something</span> happened." },
+                           { qNum: 13, statement: "Diane said <span class='underline'>something</span>." },
+                           { qNum: 14, statement: "This book belongs to <span class='underline'>somebody</span>." },
+                           { qNum: 15, statement: "I'm worried about <span class='underline'>something</span>." },
+                           { qNum: 16, statement: "<span class='underline'>Something</span> fell off the shelf." },
+                        ];
+                        activity2Data.forEach(({qNum, statement}) => {
+                             document.write(`
+                                <div>
+                                    <p class="font-semibold text-gray-700">Statement: ${statement}</p>
+                                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 mt-2">
+                                        <input id="q${qNum}-input" type="text" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" placeholder="Type the question...">
+                                        <button onclick="checkAnswer(${qNum})" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-sm">Check</button>
+                                    </div>
+                                    <p id="q${qNum}-feedback" class="feedback"></p>
+                                </div>
+                            `);
+                        });
+                     </script>
+                </div>
+            </div>
+
+             <!-- Page 4: Activity 3 -->
+            <div id="page-activity3" class="page">
+                <h1 class="text-3xl font-bold text-green-700 mb-2">Activity 3: Negative Questions</h1>
+                <p class="text-gray-500 mb-6">You are surprised. Write a negative question for each situation.</p>
+                <div class="space-y-6">
+                     <script>
+                        const activity3Data = [
+                           { qNum: 17, context: "A: We won't see Lisa this evening. B: Why not?", prompt: "(she / not / come / out with us?)" },
+                           { qNum: 18, context: "A: I hope we don't meet Luke tonight. B: Why?", prompt: "(you / not / like / him?)" },
+                           { qNum: 19, context: "A: Don't go and see that film. B: Why not?", prompt: "(it / not / good?)" },
+                           { qNum: 20, context: "A: I'll have to borrow some money. B: Why?", prompt: "(you / not / have / any?)" },
+                        ];
+                        activity3Data.forEach(({qNum, context, prompt}) => {
+                             document.write(`
+                                <div>
+                                    <p class="font-medium text-gray-500 mb-1">${context}</p>
+                                    <label for="q${qNum}-input" class="font-semibold text-gray-700">Your Question: ${prompt}</label>
+                                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 mt-2">
+                                        <input id="q${qNum}-input" type="text" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" placeholder="Type the negative question...">
+                                        <button onclick="checkAnswer(${qNum})" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-sm">Check</button>
+                                    </div>
+                                    <p id="q${qNum}-feedback" class="feedback"></p>
+                                </div>
+                            `);
+                        });
+                     </script>
+                </div>
+            </div>
+
+            <!-- Page 5: Activity 4 -->
+            <div id="page-activity4" class="page">
+                <h1 class="text-3xl font-bold text-green-700 mb-2">Activity 4: Word Order</h1>
+                <p class="text-gray-500 mb-6">Put the words in brackets in the correct order to make a question.</p>
+                <div class="space-y-6">
+                    <!-- Questions 21-29 -->
+                     <script>
+                        const activity4Data = [
+                            { qNum: 21, prompt: "(how / cheese / is / made)" },
+                            { qNum: 22, prompt: "(when / invented / the computer / was)" },
+                            { qNum: 23, prompt: "(why / Sue / working / isn't / today)" },
+                            { qNum: 24, prompt: "(what time / coming / your friends / are)" },
+                            { qNum: 25, prompt: "(why / was / cancelled / the trip)" },
+                            { qNum: 26, prompt: "(where / your mother / was / born)" },
+                            { qNum: 27, prompt: "(why / you / to the party / didn't / come)" },
+                            { qNum: 28, prompt: "(how / the accident / did / happen)" },
+                            { qNum: 29, prompt: "(why / this machine / doesn't / work)" },
+                        ];
+                        activity4Data.forEach(({qNum, prompt}) => {
+                             document.write(`
+                                <div>
+                                    <label for="q${qNum}-input" class="font-semibold text-gray-700">${qNum - 20}. ${prompt}</label>
+                                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 mt-2">
+                                        <input id="q${qNum}-input" type="text" class="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" placeholder="Type the question...">
+                                        <button onclick="checkAnswer(${qNum})" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-sm">Check</button>
+                                    </div>
+                                    <p id="q${qNum}-feedback" class="feedback"></p>
+                                </div>
+                            `);
+                        });
+                     </script>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // --- Data for questions and answers ---
+        const answers = {
+            1: ["where do you live"],
+            2: ["were you born there"],
+            3: ["are you married"],
+            4: ["how long have you been married"],
+            5: ["have you got any children", "do you have any children", "have you got children", "do you have children"],
+            6: ["how old are they"],
+            7: ["what do you do"],
+            8: ["what does your wife do"],
+            9: ["who hit you"],
+            10: ["who did you hit"],
+            11: ["who paid the bill"],
+            12: ["what happened"],
+            13: ["what did diane say"],
+            14: ["who does this book belong to"],
+            15: ["what are you worried about"],
+            16: ["what fell off the shelf"],
+            17: ["isn't she coming out with us"],
+            18: ["don't you like him"],
+            19: ["isn't it good"],
+            20: ["don't you have any", "haven't you got any"],
+            21: ["how is cheese made"],
+            22: ["when was the computer invented"],
+            23: ["why isn't sue working today"],
+            24: ["what time are your friends coming"],
+            25: ["why was the trip cancelled"],
+            26: ["where was your mother born"],
+            27: ["why didn't you come to the party"],
+            28: ["how did the accident happen"],
+            29: ["why doesn't this machine work"],
+        };
+
+        // --- Page Navigation Logic ---
+        window.addEventListener('DOMContentLoaded', () => {
+            const pages = document.querySelectorAll('.page');
+            const navButtons = document.querySelectorAll('.nav-button');
+
+            function showPage(pageId) {
+                pages.forEach(page => page.classList.remove('active'));
+                document.getElementById(pageId).classList.add('active');
+
+                navButtons.forEach(button => button.classList.remove('active'));
+                const navButtonId = `nav-${pageId.split('-')[1]}`;
+                document.getElementById(navButtonId)?.classList.add('active');
+            }
+
+            document.getElementById('nav-rules').addEventListener('click', () => showPage('page-rules'));
+            document.getElementById('nav-activity1').addEventListener('click', () => showPage('page-activity1'));
+            document.getElementById('nav-activity2').addEventListener('click', () => showPage('page-activity2'));
+            document.getElementById('nav-activity3').addEventListener('click', () => showPage('page-activity3'));
+            document.getElementById('nav-activity4').addEventListener('click', () => showPage('page-activity4'));
+
+
+            for (let i = 1; i <= Object.keys(answers).length; i++) {
+                const inputElement = document.getElementById(`q${i}-input`);
+                if (inputElement) {
+                    inputElement.addEventListener('keypress', event => {
+                        if (event.key === 'Enter') {
+                            event.preventDefault();
+                            checkAnswer(i);
+                        }
+                    });
+                }
+            }
+        });
+
+        // --- Answer Checking Logic ---
+        function checkAnswer(questionNumber) {
+            const inputElement = document.getElementById(`q${questionNumber}-input`);
+            const feedbackElement = document.getElementById(`q${questionNumber}-feedback`);
+            
+            const userAnswer = inputElement.value.toLowerCase().trim().replace(/\?$/, '');
+
+            if (userAnswer === '') {
+                feedbackElement.textContent = "Please enter an answer.";
+                feedbackElement.className = "feedback incorrect";
+                inputElement.classList.add('border-red-400');
+                inputElement.classList.remove('border-green-400');
+                return;
+            }
+
+            const correctAnswers = answers[questionNumber];
+            const isCorrect = correctAnswers.includes(userAnswer);
+
+            if (isCorrect) {
+                feedbackElement.textContent = "Correct! Well done.";
+                feedbackElement.className = "feedback correct";
+                inputElement.classList.remove('border-red-400', 'focus:ring-red-400');
+                inputElement.classList.add('border-green-400', 'focus:ring-green-400');
+            } else {
+                feedbackElement.textContent = "Not quite. Check the rules and try again.";
+                feedbackElement.className = "feedback incorrect";
+                inputElement.classList.remove('border-green-400', 'focus:ring-green-400');
+                inputElement.classList.add('border-red-400', 'focus:ring-red-400');
+            }
+        }
+    </script>
+</body>
+</html>
