@@ -1,6 +1,543 @@
-<div class="flex justify-center">
-                    <img src="https://johanka2014.github.io/question_forms/questions_image.jpg" 
-                         alt="Illustration of people with Q&A speech bubbles" 
-                         class="rounded-lg w-full max-w-2xl shadow-md"
-                         onerror="this.onerror=null;this.src='https://placehold.co/800x400/e2e8f0/4a5568?text=Image+Not+Found';">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject and Object Questions Lesson</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #E8F5E9; /* New light green background */
+            color: #1B5E20; /* Darker green text for contrast */
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* Abstract background shapes with new complementary colors */
+        body::before,
+        body::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+        /* Top-right shape */
+        body::before {
+            width: 300px;
+            height: 300px;
+            background-color: #A5D6A7; /* Soft green */
+            top: -50px;
+            right: -100px;
+            opacity: 0.6;
+        }
+        /* Bottom-left shape */
+        body::after {
+            width: 400px;
+            height: 400px;
+            background-color: #C5E1A5; /* Light lime green */
+            bottom: -150px;
+            left: -150px;
+            opacity: 0.5;
+        }
+
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        .btn {
+            @apply px-6 py-3 rounded-lg font-semibold transition-transform transform hover:scale-105 shadow-md;
+        }
+        .btn-primary {
+            @apply bg-green-600 hover:bg-green-700 text-white;
+        }
+        .btn-secondary-nav {
+             @apply px-5 py-2 rounded-lg font-semibold transition-colors duration-200;
+             @apply bg-white/60 hover:bg-white/90 text-green-800 border border-green-200 shadow-sm;
+        }
+        /* Style for the main navigation buttons */
+        .btn-nav {
+            @apply px-8 py-4 rounded-full font-extrabold text-lg transition-all duration-300 transform hover:scale-110 shadow-xl;
+            @apply bg-green-800 hover:bg-green-900 text-white;
+        }
+       
+        /* Glassmorphism card effect */
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 1);
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+        .answer-reveal {
+            display: none;
+        }
+        .practice-input {
+             @apply w-full mt-1 p-3 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500;
+        }
+        .dialogue-input {
+             @apply w-full mt-1 p-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500;
+        }
+        .feedback-icon {
+            @apply ml-2 text-xl;
+        }
+        /* Fade transition for slides */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide.active {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
+
+    <div id="website-container" class="w-full max-w-6xl mx-auto mb-4">
+        <!-- Slide 1: Title Page -->
+        <div id="slide1" class="slide active">
+            <div class="grid md:grid-cols-2 gap-8 items-center text-center md:text-left">
+                <img src="https://johanka2014.github.io/question_forms/1.jpg" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x800/C8E6C9/1B5E20?text=Team+Discussion';" 
+                     alt="People in a meeting" class="rounded-lg shadow-2xl mx-auto w-full max-h-[500px] object-cover">
+                <div class="flex flex-col space-y-6">
+                    <h1 class="text-4xl md:text-5xl font-bold text-green-900">Subject and Object Questions</h1>
+                    <p class="text-lg text-green-800">Welcome to this lesson on subject and object questions. This guide will help B1 learners master these essential question forms through clear explanations and practical exercises.</p>
+                    <p class="text-md text-green-700">by Joanna McKeogh</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <button onclick="changeSlide(1)" class="btn btn-primary">Start Lesson</button>
+                    </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Definition (RECODED FOR RESPONSIVENESS) -->
+        <div id="slide2" class="slide">
+             <div class="space-y-8">
+                <h2 class="text-3xl font-bold text-green-900 text-center">What Are Subject and Object Questions?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="glassmorphism p-6 text-center">
+                        <h3 class="text-2xl font-semibold mb-4">Definition</h3>
+                        <p class="text-lg leading-relaxed"><strong>Subject questions</strong> ask about who or what performs an action.</p>
+                        <p class="my-4 text-lg leading-relaxed"><strong>Object questions</strong> inquire about who or what receives the action.</p>
+                        <p class="mt-4 text-green-700">Both types are essential for natural communication.</p>
+                    </div>
+                    <img src="https://johanka2014.github.io/question_forms/2.jpg" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x300/C8E6C9/1B5E20?text=Why%3F';"
+                         alt="Two people talking" class="rounded-lg shadow-xl mx-auto w-full max-w-md">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 3: Subject Questions -->
+        <div id="slide3" class="slide">
+            <h2 class="text-3xl font-bold text-green-900 text-center mb-8">How to Form Subject Questions</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <img src="https://johanka2014.github.io/question_forms/subject_questions.png" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x800/C8E6C9/1B5E20?text=Flowchart';"
+                     alt="Flowchart for subject questions" class="rounded-lg shadow-xl mx-auto">
+                <div class="glassmorphism p-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-center">Simple Structure</h3>
+                    <p class="font-mono bg-slate-100 p-4 rounded-md text-slate-700 text-center text-lg">Question word + main verb</p>
+                    <p class="text-center my-4 font-bold text-green-700">No auxiliary verbs (do/does/did) required!</p>
+                    <ul class="mt-4 space-y-3 list-disc list-inside text-green-800 text-lg">
+                        <li><strong>Who lives</strong> here?</li>
+                        <li><strong>What happened</strong> yesterday?</li>
+                        <li><strong>Which student passed</strong> the exam?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Object Questions -->
+        <div id="slide4" class="slide">
+            <h2 class="text-3xl font-bold text-green-900 text-center mb-8">How to Form Object Questions</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="glassmorphism p-8">
+                     <h3 class="text-2xl font-semibold mb-4 text-center">More Complex Structure</h3>
+                     <p class="font-mono bg-slate-100 p-4 rounded-md text-slate-700 text-center text-lg">Question word + auxiliary + subject + main verb</p>
+                     <p class="text-center my-4 font-bold text-orange-600">Requires do/does/did (except with be/have/modals).</p>
+                    <ul class="mt-4 space-y-3 list-disc list-inside text-green-800 text-lg">
+                        <li><strong>Who did you see?</strong></li>
+                        <li><strong>What has David lost?</strong></li>
+                        <li><strong>Where do they live?</strong></li>
+                    </ul>
+                </div>
+                <img src="https://johanka2014.github.io/question_forms/object_questions.png" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x800/C8E6C9/1B5E20?text=Flowchart';"
+                     alt="Flowchart for object questions" class="rounded-lg shadow-xl mx-auto">
+            </div>
+        </div>
+
+        <!-- Slide 5: Comparison -->
+        <div id="slide5" class="slide">
+            <h2 class="text-3xl font-bold text-green-900 text-center mb-8">Subject vs. Object Question Comparison</h2>
+            <div class="max-w-3xl mx-auto glassmorphism p-6">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="border-b-2 border-green-200">
+                            <th class="p-4 text-xl font-semibold">Subject Questions</th>
+                            <th class="p-4 text-xl font-semibold">Object Questions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-green-100">
+                            <td class="p-4">Who visited the museum?</td>
+                            <td class="p-4">Who did Anna visit?</td>
+                        </tr>
+                        <tr class="border-b border-green-100">
+                            <td class="p-4">What happened yesterday?</td>
+                            <td class="p-4">What did you do yesterday?</td>
+                        </tr>
+                         <tr class="border-b border-green-100">
+                            <td class="p-4">Which book fell down?</td>
+                            <td class="p-4">Which book did you choose?</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold text-green-600">No auxiliary needed</td>
+                            <td class="p-4 font-bold text-orange-600">Auxiliary required</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 6: Guided Practice 1 (RECODED FOR RESPONSIVENESS) -->
+        <div id="slide6" class="slide">
+            <h2 class="text-3xl font-bold text-green-900 text-center mb-8">Guided Practice: Make Questions (1)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <img src="https://johanka2014.github.io/question_forms/luke_reading.png" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x800/C8E6C9/1B5E20?text=Luke+Reading';"
+                     alt="Illustration of a person reading" class="rounded-lg shadow-xl mx-auto order-1 md:order-2">
+                <div class="text-center glassmorphism p-8 md:order-1">
+                    <p class="text-lg">Turn this statement into a subject and an object question:</p>
+                    <p class="my-4 text-2xl font-semibold bg-white p-4 rounded-lg shadow">"Luke is reading the book."</p>
+                    
+                    <div class="text-left my-6">
+                        <label for="practice-subject" class="font-semibold">Subject Question:</label>
+                        <input id="practice-subject" type="text" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Type your answer...">
+                        <p id="answer-subject" class="answer-reveal mt-2 p-2 bg-green-100 text-green-800 rounded-md"><strong>Answer:</strong> Who is reading the book?</p>
+                    </div>
+
+                    <div class="text-left my-6">
+                        <label for="practice-object" class="font-semibold">Object Question:</label>
+                        <input id="practice-object" type="text" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Type your answer...">
+                        <p id="answer-object" class="answer-reveal mt-2 p-2 bg-green-100 text-green-800 rounded-md"><strong>Answer:</strong> What is Luke reading?</p>
+                    </div>
+
+                    <button id="revealBtn" onclick="revealAnswers()" class="btn btn-primary">Reveal Answers</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Guided Practice 2 (RECODED FOR RESPONSIVENESS) -->
+        <div id="slide7" class="slide">
+            <h2 class="text-3xl font-bold text-green-900 text-center mb-8">Guided Practice: Make Questions (2)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <img src="https://johanka2014.github.io/question_forms/julie_with_icecream.png" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x800/C8E6C9/1B5E20?text=Julie+with+Ice+Cream';"
+                     alt="Illustration of a person eating ice cream" class="rounded-lg shadow-xl mx-auto">
+                <div class="text-center glassmorphism p-8">
+                    <p class="text-lg">Now try this statement:</p>
+                    <p class="my-4 text-2xl font-semibold bg-white p-4 rounded-lg shadow">"Julie is eating ice cream."</p>
+                    
+                    <div class="text-left my-6">
+                        <label for="practice-subject-2" class="font-semibold">Subject Question:</label>
+                        <input id="practice-subject-2" type="text" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Type your answer...">
+                        <p id="answer-subject-2" class="answer-reveal mt-2 p-2 bg-green-100 text-green-800 rounded-md"><strong>Answer:</strong> Who is eating ice cream?</p>
+                    </div>
+
+                    <div class="text-left my-6">
+                        <label for="practice-object-2" class="font-semibold">Object Question:</label>
+                        <input id="practice-object-2" type="text" class="w-full mt-1 p-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Type your answer...">
+                        <p id="answer-object-2" class="answer-reveal mt-2 p-2 bg-green-100 text-green-800 rounded-md"><strong>Answer:</strong> What is Julie eating?</p>
+                    </div>
+
+                    <button id="revealBtn2" onclick="revealAnswers2()" class="btn btn-primary">Reveal Answers</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Dialogue Practice -->
+        <div id="slide8" class="slide">
+             <h2 class="text-3xl font-bold text-green-900 text-center mb-4">Practice: Complete the Dialogue</h2>
+             <p class="text-center text-green-800 mb-6">Complete the conversation at the Taj Mahal.</p>
+             <div class="grid md:grid-cols-3 gap-8 items-center">
+                <div class="glassmorphism p-6 space-y-2 md:col-span-2">
+                    <!-- All 8 dialogue questions are here -->
+                    <div>
+                        <p><strong>Tour guide:</strong> Welcome to the Taj Mahal.</p>
+                        <div class="flex items-center"><input id="dialogue-1" data-answer="Do you have any questions?" type="text" class="dialogue-input" placeholder="(you / have / any questions?)"><span id="feedback-1" class="feedback-icon"></span></div>
+                    </div>
+                    <div>
+                        <p><strong>Visitor:</strong></p>
+                        <div class="flex items-center"><input id="dialogue-2" data-answer="How old is the building?" type="text" class="dialogue-input" placeholder="(how old / the building / is?)"><span id="feedback-2" class="feedback-icon"></span></div>
+                    </div>
+                    <div>
+                        <p><strong>Tour guide:</strong> The Taj Mahal was built in 1631.</p>
+                        <p><strong>Visitor:</strong></p>
+                        <div class="flex items-center"><input id="dialogue-3" data-answer="Who built it?" type="text" class="dialogue-input" placeholder="(who / built / it?)"><span id="feedback-3" class="feedback-icon"></span></div>
+                    </div>
+                    <div>
+                        <p><strong>Tour guide:</strong> The construction was ordered by the emperor Shah Jahan.</p>
+                        <p><strong>Visitor:</strong></p>
+                        <div class="flex items-center"><input id="dialogue-4" data-answer="Why did he build it?" type="text" class="dialogue-input" placeholder="(why / he / built / it?)"><span id="feedback-4" class="feedback-icon"></span></div>
+                    </div>
+                    <div>
+                        <p><strong>Tour guide:</strong> He decided to build it because of the death of his wife. He was very sad.</p>
+                        <p><strong>Visitor:</strong></p>
+                        <div class="flex items-center"><input id="dialogue-5" data-answer="How did she die?" type="text" class="dialogue-input" placeholder="(how / she / died?)"><span id="feedback-5" class="feedback-icon"></span></div>
+                    </div>
+                     <div>
+                        <p><strong>Tour guide:</strong> She died while giving birth.</p>
+                        <p><strong>Visitor:</strong></p>
+                        <div class="flex items-center"><input id="dialogue-6" data-answer="How long did it take to build?" type="text" class="dialogue-input" placeholder="(how long / it / took / to build?)"><span id="feedback-6" class="feedback-icon"></span></div>
+                    </div>
+                    <div>
+                        <p><strong>Tour guide:</strong> It took 22 years to build.</p>
+                        <p><strong>Visitor:</strong></p>
+                        <div class="flex items-center"><input id="dialogue-7" data-answer="How many people worked on it?" type="text" class="dialogue-input" placeholder="(how many people / worked / on it?)"><span id="feedback-7" class="feedback-icon"></span></div>
+                    </div>
+                    <div>
+                        <p><strong>Tour guide:</strong> 20,000 workers.</p>
+                        <p><strong>Visitor:</strong></p>
+                        <div class="flex items-center"><input id="dialogue-8" data-answer="How many people visit the site every year?" type="text" class="dialogue-input" placeholder="(how many people / visit / the site / every year?)"><span id="feedback-8" class="feedback-icon"></span></div>
+                    </div>
+                    <div class="text-center pt-4">
+                        <button onclick="checkDialogue()" class="btn btn-primary">Check All Answers</button>
+                    </div>
+                </div>
+                <img src="https://johanka2014.github.io/question_forms/taj_mahal_crop.png" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x800/C8E6C9/1B5E20?text=Taj+Mahal';"
+                     alt="The Taj Mahal" class="rounded-lg shadow-xl mx-auto">
+             </div>
+        </div>
+
+        <!-- Slide 9: Make Questions Practice -->
+        <div id="slide9" class="slide">
+            <h2 class="text-3xl font-bold text-green-900 text-center mb-4">Practice: Make Questions</h2>
+            <p class="text-center text-green-800 mb-6">Make questions for the following sentences, as in the example.</p>
+            <div class="glassmorphism p-8 max-w-4xl mx-auto space-y-6">
+                <p><strong>Example:</strong> He visited me yesterday. -> <em>Who visited you yesterday?</em></p>
+                
+                <div class="practice-item">
+                    <p>1. I found it under my bed. <strong>What...</strong></p>
+                    <div class="flex items-center">
+                        <input id="make-q-1" data-answer="What did you find under your bed?" type="text" class="practice-input">
+                        <span id="feedback-mq-1" class="feedback-icon"></span>
+                    </div>
+                </div>
+                 <div class="practice-item">
+                    <p>2. She lent me some money. <strong>Who...</strong></p>
+                     <div class="flex items-center">
+                        <input id="make-q-2" data-answer="Who lent you some money?" type="text" class="practice-input">
+                        <span id="feedback-mq-2" class="feedback-icon"></span>
+                    </div>
+                </div>
+                 <div class="practice-item">
+                    <p>3. I lent money to him. <strong>Who...</strong></p>
+                     <div class="flex items-center">
+                        <input id="make-q-3" data-answer="Who did you lend money to?" type="text" class="practice-input">
+                        <span id="feedback-mq-3" class="feedback-icon"></span>
+                    </div>
+                </div>
+                 <div class="practice-item">
+                    <p>4. Jonathon is going there this weekend. <strong>Where...</strong></p>
+                     <div class="flex items-center">
+                        <input id="make-q-4" data-answer="Where is Jonathon going this weekend?" type="text" class="practice-input">
+                        <span id="feedback-mq-4" class="feedback-icon"></span>
+                    </div>
+                </div>
+                 <div class="practice-item">
+                    <p>5. I was doing it this morning. <strong>What...</strong></p>
+                     <div class="flex items-center">
+                        <input id="make-q-5" data-answer="What were you doing this morning?" type="text" class="practice-input">
+                        <span id="feedback-mq-5" class="feedback-icon"></span>
+                    </div>
+                </div>
+                <div class="practice-item">
+                    <p>6. They have eaten all the cake. <strong>Who...</strong></p>
+                     <div class="flex items-center">
+                        <input id="make-q-6" data-answer="Who has eaten all the cake?" type="text" class="practice-input">
+                        <span id="feedback-mq-6" class="feedback-icon"></span>
+                    </div>
+                </div>
+                 <div class="practice-item">
+                    <p>7. My interview finished then. <strong>When...</strong></p>
+                     <div class="flex items-center">
+                        <input id="make-q-7" data-answer="When did your interview finish?" type="text" class="practice-input">
+                        <span id="feedback-mq-7" class="feedback-icon"></span>
+                    </div>
+                </div>
+                <div class="text-center mt-6">
+                     <button onclick="checkMakeQuestions()" class="btn btn-primary">Check Answers</button>
+                 </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Free Practice -->
+        <div id="slide10" class="slide">
+            <h2 class="text-3xl font-bold text-green-900 text-center mb-2">Free Practice: Ask and Answer</h2>
+            <p class="text-center text-green-800 mb-8">Work with a partner. Write 3 subject and 3 object questions about family, hobbies, or school.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glassmorphism p-6">
+                    <h3 class="text-2xl font-semibold mb-4">Your Subject Questions</h3>
+                    <textarea class="w-full h-40 bg-white border border-slate-300 rounded-lg p-3 text-slate-700 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="1. Who...&#10;2. What...&#10;3. Which..."></textarea>
+                </div>
+                 <div class="glassmorphism p-6">
+                    <h3 class="text-2xl font-semibold mb-4">Your Object Questions</h3>
+                    <textarea class="w-full h-40 bg-white border border-slate-300 rounded-lg p-3 text-slate-700 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="1. Who did...&#10;2. What did...&#10;3. Where do..."></textarea>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 11: Review and Homework -->
+        <div id="slide11" class="slide">
+            <h2 class="text-3xl font-bold text-green-900 text-center mb-8">Review and Homework</h2>
+             <div class="max-w-2xl mx-auto text-center glassmorphism p-8">
+                <h3 class="text-2xl font-semibold mb-4">Key Points</h3>
+                <ul class="space-y-2 text-lg">
+                    <li><span class="font-semibold">Subject Question:</span> Asks about who/what performs the action.</li>
+                    <li><span class="font-semibold">Object Question:</span> Asks about who/what receives the action.</li>
+                </ul>
+                <div class="mt-8">
+                    <h3 class="text-2xl font-semibold mb-2">Homework</h3>
+                    <p class="text-lg">Complete the 10 subject/object questions worksheet.</p>
+                </div>
+                <button class="btn btn-primary mt-8" onclick="changeSlide(0)">Back to Start</button>
+             </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="flex justify-between items-center w-full max-w-6xl mt-8">
+        <button id="prevBtn" onclick="changeSlide(-1, true)" class="btn-nav">Previous</button>
+        <div class="flex gap-4">
+            <button onclick="changeSlide(5, false)" class="btn-secondary-nav">Guided Practice</button>
+            <button onclick="changeSlide(7, false)" class="btn-secondary-nav">Dialogue Practice</button>
+        </div>
+        <button id="nextBtn" onclick="changeSlide(1, true)" class="btn-nav">Next</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            // Update navigation buttons
+            prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
+            nextBtn.style.visibility = index === totalSlides - 1 ? 'hidden' : 'visible';
+        }
+
+        function changeSlide(direction, isNavigation = false) {
+             if (isNavigation) {
+                 currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+             } else {
+                 currentSlide = direction;
+             }
+            showSlide(currentSlide);
+        }
+
+        // Initialize first slide
+        showSlide(currentSlide);
+        
+        // --- Guided Practice 1 Logic ---
+        function revealAnswers() {
+            document.getElementById('answer-subject').style.display = 'block';
+            document.getElementById('answer-object').style.display = 'block';
+            const revealBtn = document.getElementById('revealBtn');
+            revealBtn.textContent = 'Answers Shown!';
+            revealBtn.disabled = true;
+        }
+
+        const practiceSlideObserver1 = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class' && !document.getElementById('slide6').classList.contains('active')) {
+                     document.getElementById('answer-subject').style.display = 'none';
+                     document.getElementById('answer-object').style.display = 'none';
+                     document.getElementById('practice-subject').value = '';
+                     document.getElementById('practice-object').value = '';
+                     const revealBtn = document.getElementById('revealBtn');
+                     revealBtn.textContent = 'Reveal Answers';
+                     revealBtn.disabled = false;
+                }
+            });
+        });
+        practiceSlideObserver1.observe(document.getElementById('slide6'), { attributes: true });
+
+        // --- Guided Practice 2 Logic ---
+        function revealAnswers2() {
+            document.getElementById('answer-subject-2').style.display = 'block';
+            document.getElementById('answer-object-2').style.display = 'block';
+            const revealBtn2 = document.getElementById('revealBtn2');
+            revealBtn2.textContent = 'Answers Shown!';
+            revealBtn2.disabled = true;
+        }
+
+        const practiceSlideObserver2 = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class' && !document.getElementById('slide7').classList.contains('active')) {
+                     document.getElementById('answer-subject-2').style.display = 'none';
+                     document.getElementById('answer-object-2').style.display = 'none';
+                     document.getElementById('practice-subject-2').value = '';
+                     document.getElementById('practice-object-2').value = '';
+                     const revealBtn2 = document.getElementById('revealBtn2');
+                     revealBtn2.textContent = 'Reveal Answers';
+                     revealBtn2.disabled = false;
+                }
+            });
+        });
+        practiceSlideObserver2.observe(document.getElementById('slide7'), { attributes: true });
+
+        // --- Dialogue Practice Logic ---
+        function checkDialogue() {
+            const inputs = document.querySelectorAll('#slide8 .dialogue-input');
+            inputs.forEach(input => {
+                const id = input.id.split('-')[1];
+                const feedbackEl = document.getElementById(`feedback-${id}`);
+                const userAnswer = input.value.trim().replace(/\?$/, '').toLowerCase();
+                const correctAnswer = input.dataset.answer.replace(/\?$/, '').toLowerCase();
+                
+                if (userAnswer === correctAnswer) {
+                    feedbackEl.textContent = '✅';
+                    feedbackEl.style.color = 'green';
+                } else {
+                    feedbackEl.textContent = '❌';
+                    feedbackEl.style.color = 'red';
+                }
+            });
+        }
+        
+        // --- Make Questions Practice Logic ---
+        function checkMakeQuestions() {
+            const inputs = document.querySelectorAll('#slide9 .practice-input');
+            inputs.forEach(input => {
+                const id = input.id.split('-')[2];
+                const feedbackEl = document.getElementById(`feedback-mq-${id}`);
+                const userAnswer = input.value.trim().replace(/\?$/, '').toLowerCase();
+                const correctAnswer = input.dataset.answer.replace(/\?$/, '').toLowerCase();
+                
+                if (userAnswer === correctAnswer) {
+                    feedbackEl.textContent = '✅';
+                    feedbackEl.style.color = 'green';
+                } else {
+                    feedbackEl.textContent = '❌';
+                    feedbackEl.style.color = 'red';
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
